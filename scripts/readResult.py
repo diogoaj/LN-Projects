@@ -3,4 +3,11 @@ with open("resultado.txt", "r") as f:
 	f.close()
 
 lines = lines[2:] + [lines[0]]
-print lines
+
+sol = ""
+
+for line in lines:
+	l = line.split("\t")
+	sol += l[2].replace("\n", "")
+
+print sol[::-1]

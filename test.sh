@@ -3,4 +3,4 @@ fstcompile --isymbols=syms.txt --osymbols=syms.txt number.txt | fstarcsort > num
 
 fstcompose number.fst descodificador.fst | fstshortestpath | fstproject --project_output | fstrmepsilon | fstprint --acceptor --isymbols=./syms.txt > resultado.txt
 
-cat resultado.txt
+python scripts/readResult.py
