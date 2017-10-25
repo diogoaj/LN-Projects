@@ -1,0 +1,7 @@
+*.fst
+*_extend.txt
+*.pdf
+number.txt
+number.fst
+resultado.txt
+!ln1.pdf
