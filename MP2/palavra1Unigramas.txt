@@ -1,4 +1,6 @@
-�	9
+­	9
+«	51
+»	63
 051004	1
 1	1
 100	2
@@ -2132,7 +2134,6 @@ museu	1
 musical	1
 músicas	2
 músico	1
-n�	3
 na	71
 nacionais	1
 nacional	3
@@ -2173,6 +2174,7 @@ ninguém	3
 nisso	1
 nível	2
 no	83
+nº	3
 nobres	1
 noé	1
 nogueira	1

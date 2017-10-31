@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import string
 import nltk
 import locale
@@ -15,7 +13,7 @@ def read_file(filename):
 
 def pre_process(line):
 	line = line.lower()
-	return line.translate(None, string.punctuation + "»«")
+	return line.translate(None, string.punctuation)
 
 
 def calculate_ngrams(line):
@@ -40,7 +38,7 @@ def save_output(filename, d):
 	text = ""
 	for key in sorted(d, cmp=locale.strcoll):
 		text += "%s\t%s\n" % (key, d[key])
-	f.write(text)
+	f.write(text.encode("utf8"))
 	f.close()
 
 
@@ -56,7 +54,8 @@ if __name__ == "__main__":
 	for filename in files:	
 		lines = read_file(filename)
 		for line in lines:
-			calculate_ngrams(pre_process(line))
+			l = pre_process(line)
+			calculate_ngrams(l.decode("utf8"))
 		save_output("palavra"+str(index)+"Unigramas.txt", unigram_dict)
 		save_output("palavra"+str(index)+"Bigramas.txt", bigram_dict)
 
