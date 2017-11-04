@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 def prob_laplace(wn, wnminusone, v):
-	return (int(wn)+1)/(int(wnminusone)+v)
+	return (float(wn)+1)/(float(wnminusone)+v)
 
 def process_param_file(file_param):
 	f = open(file_param, "r")
@@ -39,7 +39,7 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 					prob = prob_laplace(uni_dic[word], uni_dic[word], v)
 				else:
 					prob = prob_laplace(1, 1, v)
-			
+
 			else:
 				str_aux = aux + " " + word
 
@@ -49,7 +49,7 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 				elif(str_aux not in bi_dic and aux in uni_dic):
 					prob *= prob_laplace(1, uni_dic[aux], v)
 
-				else:
+				elif(str_aux not in bi_dic and aux not in uni_dic):
 					prob *= prob_laplace(1, 1, v)
 
 			aux = word
@@ -63,7 +63,6 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 	v = vocabulary_size(unigram_file)
 	unigram_values = ngram_dict(unigram_file)
 	bigram_values = ngram_dict(bigram_file)
-	aux = None
 	res = {}
 
 	sentences = open(sentences_file, "r")
@@ -80,15 +79,13 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 			p2 = sentence_probability(unigram_values, bigram_values, str2, v)
 
 
+		
 		if p1 > p2:	
 			res[string] = param_words[0]
 		else:
 			res[string] = param_words[1] 
 
-	print p1
-	print p2
-	print res
 	return res
 
 
-compute_lemma("palavra2Unigramas.txt", "palavra2Bigramas.txt", "fomosParametrizacao.txt", "fomos.txt")
+compute_lemma("palavra1Unigramas.txt", "palavra1Bigramas.txt", "fomosParametrizacao.txt", "fomos.txt")
