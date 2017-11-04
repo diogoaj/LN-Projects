@@ -1,30 +1,94 @@
-
-'''
-from nltk.corpus import brown
-from nltk.probability import LidstoneProbDist, WittenBellProbDist
-from nltk.model.ngram import NgramModel
-
-estimator = lambda fdist, bins: LidstoneProbDist(fdist, 0.2)
-lm = NgramModel(3, brown.words(categories='news'), estimator)
-
-# https://stackoverflow.com/questions/6462709/nltk-language-model-ngram-calculate-the-prob-of-a-word-from-context
-
-print lm.prob("word", ["This is a context which generates a word"])
-'''
+# -*- coding: utf-8 -*-
 
 def prob_laplace(wn, wnminusone, v):
-	return (wn+1)/(wnminusone+v)
+	return (int(wn)+1)/(int(wnminusone)+v)
 
 def process_param_file(file_param):
 	f = open(file_param, "r")
-	words = f.readlines()[1].split(" ")[0:2]
+	lines = f.readlines()
+	words = lines[1].split(" ")[0:2]
+	words.append(lines[0].replace("\n", ""))
 	return words
 
 def vocabulary_size(unigramfile):
 	f = open(unigramfile, "r")
-	print len(f.readlines())
+	return len(f.readlines())
 
-def compute_prob(unigram_file, bigram_file, param_file, sentences_file):
+def ngram_dict(ngramfile):
+	res = {}
+
+	f = open(ngramfile, "r")
+	lines = f.readlines()
+
+	for sentence in lines:
+		row = sentence.split("\t")
+
+		res[row[0]] = row[1][0]
+
+	return res
+
+def sentence_probability(uni_dic, bi_dic, sentence, v):
+	aux = None
+
+	for wrd in sentence:
+
+			word = wrd.encode('utf8')
+
+			if(aux == None):
+				if(word in uni_dic):
+					prob = prob_laplace(uni_dic[word], uni_dic[word], v)
+				else:
+					prob = prob_laplace(1, 1, v)
+			
+			else:
+				str_aux = aux + " " + word
+
+				if(str_aux in bi_dic and aux in uni_dic):
+					prob *= prob_laplace(bi_dic[str_aux], uni_dic[aux], v)
+				
+				elif(str_aux not in bi_dic and aux in uni_dic):
+					prob *= prob_laplace(1, uni_dic[aux], v)
+
+				else:
+					prob *= prob_laplace(1, 1, v)
+
+			aux = word
+
+	return prob
+
+
+def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 
 	param_words = process_param_file(param_file)
 	v = vocabulary_size(unigram_file)
+	unigram_values = ngram_dict(unigram_file)
+	bigram_values = ngram_dict(bigram_file)
+	aux = None
+	res = {}
+
+	sentences = open(sentences_file, "r")
+	lines = sentences.readlines()
+
+	for string in lines:
+		str1 = string.replace(param_words[2], param_words[0]).split(" ")
+		str2 = string.replace(param_words[2], param_words[1]).split(" ")
+
+
+		for wrd in str1:
+
+			p1 = sentence_probability(unigram_values, bigram_values, str1, v)
+			p2 = sentence_probability(unigram_values, bigram_values, str2, v)
+
+
+		if p1 > p2:	
+			res[string] = param_words[0]
+		else:
+			res[string] = param_words[1] 
+
+	print p1
+	print p2
+	print res
+	return res
+
+
+compute_lemma("palavra2Unigramas.txt", "palavra2Bigramas.txt", "fomosParametrizacao.txt", "fomos.txt")
