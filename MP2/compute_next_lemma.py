@@ -72,11 +72,8 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 		str1 = string.replace(param_words[2], param_words[0]).split(" ")
 		str2 = string.replace(param_words[2], param_words[1]).split(" ")
 
-
-		for wrd in str1:
-
-			p1 = sentence_probability(unigram_values, bigram_values, str1, v)
-			p2 = sentence_probability(unigram_values, bigram_values, str2, v)
+		p1 = sentence_probability(unigram_values, bigram_values, str1, v)
+		p2 = sentence_probability(unigram_values, bigram_values, str2, v)
 
 
 		
