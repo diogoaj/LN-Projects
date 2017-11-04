@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 def prob_laplace(wn, wnminusone, v):
 	return (float(wn)+1)/(float(wnminusone)+v)
 
@@ -32,7 +30,7 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 
 	for wrd in sentence:
 
-			word = wrd.encode('utf8')
+			word = wrd.replace("\n", "")
 
 			if(aux == None):
 				if(word in uni_dic):
@@ -43,17 +41,23 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 			else:
 				str_aux = aux + " " + word
 
-				if(str_aux in bi_dic and aux in uni_dic):
+				if(str_aux in bi_dic):
 					prob *= prob_laplace(bi_dic[str_aux], uni_dic[aux], v)
 				
 				elif(str_aux not in bi_dic and aux in uni_dic):
 					prob *= prob_laplace(1, uni_dic[aux], v)
 
 				elif(str_aux not in bi_dic and aux not in uni_dic):
-					prob *= prob_laplace(1, 1, v)
+					prob *= prob_laplace(1, 0, v)
 
 			aux = word
 
+	
+	if(word in uni_dic):
+		prob *= prob_laplace(uni_dic[word], uni_dic[word], v)
+	else:
+		prob *= prob_laplace(1, 1, v)
+	
 	return prob
 
 
@@ -75,13 +79,15 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 		p1 = sentence_probability(unigram_values, bigram_values, str1, v)
 		p2 = sentence_probability(unigram_values, bigram_values, str2, v)
 
-
+		print p1
+		print p2
 		
 		if p1 > p2:	
 			res[string] = param_words[0]
 		else:
-			res[string] = param_words[1] 
+			res[string] = param_words[1]
 
+	print res
 	return res
 
 
