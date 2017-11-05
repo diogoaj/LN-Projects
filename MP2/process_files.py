@@ -2,7 +2,7 @@
 
 def final(f, word):
 	file_input = open(f, "r")
-	file_output = open(f.split(".")[0]+".final", "wb")
+	file_output = open(f.split(".")[0]+".final", "w")
 	
 	for line in file_input.readlines():
 		row = line.split("\t")
