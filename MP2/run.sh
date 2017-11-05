@@ -4,8 +4,8 @@
 echo "[*] Converting .out to .final..."
 python process_files.py
 
-echo "[*] Computing unigrams and bigrams..."
 # Calcula os unigramas e os bigramas de cada ficheiro
+echo "[*] Computing unigrams and bigrams..."
 python calculate_ngrams.py
 
 # Calcula as probabilidades de cada frase de teste e imprime no ecra o lema mais provavel
