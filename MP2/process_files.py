@@ -15,5 +15,5 @@ def final(f, word):
 
 
 if __name__ == "__main__":
-	final("criamCrerCriar.out", "criam")
-	final("fomosIrSer-2.out", "fomos")
+	final("palavra2Anotado.out", "criam")
+	final("palavra1Anotado.out", "fomos")

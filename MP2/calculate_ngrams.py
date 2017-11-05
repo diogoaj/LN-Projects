@@ -49,7 +49,7 @@ if __name__ == "__main__":
 	bigram_dict = {}
 
 	index = 1
-	files = ["fomosIrSer-2.final", "criamCrerCriar.final"]
+	files = ["palavra1Anotado.final", "palavra2Anotado.final"]
 
 	for filename in files:	
 		lines = read_file(filename)
