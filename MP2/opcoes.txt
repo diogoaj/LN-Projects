@@ -1,0 +1,11 @@
+﻿77974 - João Varandas
+77999 - Diogo Jerónimo
+
+
+
+Proposta de solução:
+
+       Para resolver o problema proposto, que passa por desambiguar um determinado lema, no nosso caso os lemas “criam” e “fomos”, começámos por anotar cada um dos ficheiros “fomosIrSer-2.txt” e “criamCrerCriar.txt”, cujos nomes alterámos para “palavra1.txt” e “palavra2.txt” - respetivamente. Esta anotação deu origem a dois novos ficheiros, “palavra1.out” e “palavra2.out”. 
+       Depois de anotados os ficheiros, criámos um programa que chamámos de “process_file.py” que recebe como input um dos ficheiros “palavra<[1,2]>.out” e é responsável por processá-los, isto é, tem como tarefa principal remover a pontuação, remover as linhas que contêm erros ou em que o anotador teve dúvidas, substituir a palavra a desambiguar pelo lema que aparece no inicio de cada linha, remover o lema que aparece no inicio de cada linha e eliminar as linhas em que a palavra a anotar ocorre pelo menos duas vezes. Este pré-processamento gera dois ficheiros “palavra1Anotado.final” e “palavra2Anotado.final”.
+       De seguida criámos um programa chamado de “calculate_ngrams.py” que recebe como input um dos ficheiros “palavra<[1,2]>.final” e retorna as frequências de cada unigrama e bigrama correspondentes a cada um dos ficheiros recebidos. Estas frequências são escritas para os ficheiros “palavra<[1,2]>Unigrama.txt” e “palavra<[1,2]>Bigrama.txt”.
+       Para concluir a resolução do problema proposto, criámos um ficheiro, ao qual chamámos “compute_next_lemma.py”, que recebe como input os ficheiros que contêm os unigramas, os bigramas, a parametrização e o conjunto de frases referentes ao lema a ser testado, neste caso “fomos” ou “criam”. O programa ao ler uma frase que contem a palavra a ser testada, substitui-a pelos lemas correspondentes (e.g. a palavra “criam” é substituída na frase por “criar” e “ser”) e de seguida é calculada a probabilidade da frase usando a estratégia de smoothing de Laplace, de modo a minimizar o efeito das long distance dependencies.
