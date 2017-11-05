@@ -1,0 +1,13 @@
+Grupo 38
+77974 - Joao Varandas
+77999 - Diogo Jeronimo
+
+
+Resultados Obtidos:
+
+- Quanto aos resultados, o nosso sistema conseguiu desambiguar o verbo pretendido na maioria dos casos. Porém, é difícil dizer se o algoritmo utilizado é bom o suficiente uma vez que, são utilizadas poucas frases de teste.
+
+Viabilidade:
+
+- Dados os resultados anteriores podemos concluír que o sistema pode ser razoavelmente viável. Por um lado, o sistema teve uma boa precisão nos lemas. Por outro lado, se mais frases fossem testadas, provavelmente o sistema não teria resultados tão bons.
+- O facto de as frases de treino serem poucas (cerca de 500) significa também que o sistema poderá não ser muito preciso. O algoritmo não funciona bem dados unigramas e bigramas que não estejam no treino visto que, mesmo com Laplace Smoothing, a probabilidade é ínfima.
