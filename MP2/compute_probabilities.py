@@ -67,8 +67,11 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 
 	return prob
 
-#def generate_output(res):
+def generate_output(res, param):
 	
+	for string in res:
+		aux = res[string].split(";")
+		print string + ":" + " " + aux[0] + " " + "->" + " " + param[0] + "=" + aux[1] + ";" + " " + param[1] + "=" + aux[2]
 	
 def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 
@@ -92,7 +95,8 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 			res[string] = param_words[0]+";"+str(p1)+";"+str(p2)
 		else:
 			res[string] = param_words[1]+";"+str(p1)+";"+str(p2) 
-
+	
+	generate_output(res, param_words)
 	return res
 
 
@@ -102,4 +106,4 @@ bigrama = sys.argv[2]
 parametrizacao = sys.argv[3]
 ficheiro_exemplo = sys.argv[4]
 
-print compute_lemma(unigrama, bigrama, parametrizacao, ficheiro_exemplo)
+compute_lemma(unigrama, bigrama, parametrizacao, ficheiro_exemplo)
