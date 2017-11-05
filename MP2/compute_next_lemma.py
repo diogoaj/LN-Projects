@@ -95,4 +95,4 @@ bigrama = sys.argv[2]
 parametrizacao = sys.argv[3]
 ficheiro_exemplo = sys.argv[4]
 
-print compute_lemma("palavra1Unigramas.txt", "palavra1Bigramas.txt", "fomosParametrizacao.txt", "fomos.txt")
+print compute_lemma(unigrama, bigrama, parametrizacao, ficheiro_exemplo)
