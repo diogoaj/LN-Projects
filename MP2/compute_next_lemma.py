@@ -61,6 +61,9 @@ def sentence_probability(uni_dic, bi_dic, sentence, v):
 
 	return prob
 
+#def generate_output(res):
+	
+	
 def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 
 	param_words = process_param_file(param_file)
@@ -80,9 +83,9 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 		p2 = sentence_probability(unigram_values, bigram_values, str2, v)
 
 		if p1 > p2:	
-			res[string] = param_words[0]
+			res[string] = param_words[0].append(p1).append(p2)
 		else:
-			res[string] = param_words[1] 
+			res[string] = param_words[1].append(p1).append(p2) 
 
 	return res
 
