@@ -89,9 +89,9 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 		p2 = sentence_probability(unigram_values, bigram_values, str2, v)
 
 		if p1 > p2:	
-			res[string] = param_words[0].append(p1).append(p2)
+			res[string] = param_words[0]+";"+str(p1)+";"+str(p2)
 		else:
-			res[string] = param_words[1].append(p1).append(p2) 
+			res[string] = param_words[1]+";"+str(p1)+";"+str(p2) 
 
 	return res
 
