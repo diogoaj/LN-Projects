@@ -18,13 +18,11 @@ def vocabulary_size(unigramfile):
 
 def ngram_dict(ngramfile):
 	res = {}
-
 	f = open(ngramfile, "r")
 	lines = f.readlines()
 
 	for sentence in lines:
 		row = sentence.split("\t")
-
 		res[row[0]] = row[1][0]
 
 	return res
