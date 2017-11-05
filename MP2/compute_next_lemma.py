@@ -1,5 +1,6 @@
 from nltk import word_tokenize
 from nltk.util import ngrams
+import sys
 
 def prob_laplace(wn, wnminusone, v):
 	return (float(wn)+1)/(float(wnminusone)+v)
@@ -87,5 +88,11 @@ def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 
 	return res
 
+
+
+unigrama = sys.argv[1]
+bigrama = sys.argv[2]
+parametrizacao = sys.argv[3]
+ficheiro_exemplo = sys.argv[4]
 
 print compute_lemma("palavra1Unigramas.txt", "palavra1Bigramas.txt", "fomosParametrizacao.txt", "fomos.txt")
