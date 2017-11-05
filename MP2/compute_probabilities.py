@@ -1,3 +1,9 @@
+"""
+Grupo 38
+77974 - Joao Varandas
+77999 - Diogo Jeronimo
+"""
+
 from nltk import word_tokenize
 from nltk.util import ngrams
 import sys

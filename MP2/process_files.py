@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+"""
+Grupo 38
+77974 - Joao Varandas
+77999 - Diogo Jeronimo
+"""
+
+
 def final(f, word):
 	file_input = open(f, "r")
 	file_output = open(f.split(".")[0]+".final", "w")
@@ -15,5 +22,5 @@ def final(f, word):
 
 
 if __name__ == "__main__":
-	final("criamCrerCriar.out", "criam")
-	final("fomosIrSer-2.out", "fomos")
+	final("palavra1Anotado.out", "fomos")
+	final("palavra2Anotado.out", "criam")

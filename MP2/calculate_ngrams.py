@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+"""
+Grupo 38
+77974 - João Varandas
+77999 - Diogo Jerónimo
+"""
+
+
 import string
 import nltk
 import locale
@@ -49,7 +58,7 @@ if __name__ == "__main__":
 	bigram_dict = {}
 
 	index = 1
-	files = ["fomosIrSer-2.final", "criamCrerCriar.final"]
+	files = ["palavra1Anotado.final", "palavra2Anotado.final"]
 
 	for filename in files:	
 		lines = read_file(filename)
