@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+"""
+Grupo 38
+77974 - João Varandas
+77999 - Diogo Jerónimo
+"""
+
+
 import string
 import nltk
 import locale
