@@ -4,8 +4,8 @@
 
 Fomos:
 
-houve um dia em que fomos à praia num dia de chuva: 'ir', 
-o ano passado fomos parvos: 'ir', 
-houve momentos em que fomos idiotas: 'ser', 
-hoje fomos passear: 'ir', 
+houve um dia em que fomos à praia num dia de chuva: 'ir',
+o ano passado fomos parvos: 'ir',
+houve momentos em que fomos idiotas: 'ser',
+hoje fomos passear: 'ir',
 ontem fomos dormir: 'ir'

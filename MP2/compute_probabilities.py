@@ -7,7 +7,6 @@ Grupo 38
 from nltk import word_tokenize
 from nltk.util import ngrams
 import sys
-import os
 
 def prob_laplace(wn, wnminusone, v):
 	return (float(wn)+1)/(float(wnminusone)+v)
@@ -72,7 +71,7 @@ def generate_output(res, param):
 	
 	for string in res:
 		aux = res[string].split(";")
-		print string.replace(os.linesep, "") + ":" + " " + aux[0] + " " + "-> " + "prob." + param[0] + "=" + aux[1] + "; " + "prob." + param[1] + "=" + aux[2]
+		print string.replace("\r\n", "") + ":" + " " + aux[0] + " " + "-> " + "prob." + param[0] + "=" + aux[1] + "; " + "prob." + param[1] + "=" + aux[2]
 	
 def compute_lemma(unigram_file, bigram_file, param_file, sentences_file):
 
